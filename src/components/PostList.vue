@@ -1,9 +1,13 @@
 <script setup>
-import { onBeforeMount, ref } from "vue";
+import { computed, onBeforeMount, ref } from "vue";
+import PostFilterInput from "./PostFilterInput.vue";
 // カスタムイベント
 const emit = defineEmits(["select"]);
 // 投稿一覧
 const posts = ref([]);
+// 絞り込み
+const filterText = ref("");
+const filteredPosts = computed(() => posts.value.filter((v) => v.title.includes(filterText.value)));
 // 投稿一覧を取得する
 const fetchPosts = async () => {
   try {
@@ -24,9 +28,11 @@ onBeforeMount(() => {
 </script>
 
 <template>
+  <PostFilterInput v-model="filterText" placeholder="記事タイトルで絞り込み" />
   <h2>記事一覧</h2>
+  <p v-if="filteredPosts.length === 0">記事はありません。</p>
   <ul>
-    <li v-for="post in posts" :key="post.id" @click="handleClickPost(post)">
+    <li v-for="post in filteredPosts" :key="post.id" @click="handleClickPost(post)">
       {{ post.title }}
     </li>
   </ul>
