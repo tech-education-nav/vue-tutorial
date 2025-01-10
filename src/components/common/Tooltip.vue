@@ -1,10 +1,10 @@
 <template>
-  <div class="tooltip-container">
+  <span class="tooltip-container">
     <button class="tooltip-trigger">？</button>
-    <div class="tooltip-content">
+    <span class="tooltip-content">
       <slot />
-    </div>
-  </div>
+    </span>
+  </span>
 </template>
 
 <script setup></script>
@@ -13,10 +13,12 @@
 .tooltip-container {
   position: relative;
   display: inline-block;
+  font-size: 14px;
+  font-weight: normal;
 }
 .tooltip-trigger {
-  width: 30px;
-  height: 30px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   background-color: blue;
   color: white;

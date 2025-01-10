@@ -30,8 +30,10 @@ onBeforeMount(() => {
 
 <template>
   <PostFilterInput v-model="filterText" placeholder="記事タイトルで絞り込み" />
-  <h2>記事一覧</h2>
-  <Tooltip> この機能は、ブログ記事の一覧を表示しています。 </Tooltip>
+  <h2>
+    記事一覧
+    <Tooltip> この機能は、ブログ記事の一覧を表示しています。 </Tooltip>
+  </h2>
   <p v-if="filteredPosts.length === 0">記事はありません。</p>
   <ul>
     <li v-for="post in filteredPosts" :key="post.id" @click="handleClickPost(post)">

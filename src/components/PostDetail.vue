@@ -18,12 +18,14 @@ const emit = defineEmits(["changeMode"]);
   </div>
   <div v-if="!detailPost">データがありません</div>
   <div v-else>
-    <h2>記事詳細</h2>
-    <Tooltip>
-      <p>この機能は、ブログ記事の詳細を表示しています。</p>
-      <p>詳しくはマニュアルをご覧ください。</p>
-      <a href="https://example.com/" target="_blank">マニュアルを見る</a>
-    </Tooltip>
+    <h2>
+      記事詳細
+      <Tooltip>
+        <p>この機能は、ブログ記事の詳細を表示しています。</p>
+        <p>詳しくはマニュアルをご覧ください。</p>
+        <a href="https://example.com/" target="_blank">マニュアルを見る</a>
+      </Tooltip>
+    </h2>
     <hr />
     <PostUploader />
     <h1>{{ detailPost.title }}</h1>
