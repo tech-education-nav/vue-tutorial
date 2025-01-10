@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import { provide, ref } from "vue";
 import PostList from "./components/PostList.vue";
 import PostDetail from "./components/PostDetail.vue";
 
@@ -26,16 +26,17 @@ const viewDetail = (post) => {
   detailPost.value = post;
   displayMode.value = "detail";
 };
+
+/**
+ * 投稿詳細をprovideする
+ */
+provide("detail-post", detailPost);
 </script>
 
 <template>
   <div class="wrapper">
     <PostList v-if="displayMode === 'list'" @select="viewDetail" />
-    <PostDetail
-      v-else-if="displayMode === 'detail'"
-      :detailPost="detailPost"
-      @changeMode="changeMode"
-    />
+    <PostDetail v-else-if="displayMode === 'detail'" @changeMode="changeMode" />
   </div>
 </template>
 
