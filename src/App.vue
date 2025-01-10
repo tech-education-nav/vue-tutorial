@@ -1,17 +1,27 @@
-<script setup lang="ts">
+<script setup>
 import { ref } from "vue";
 import PostList from "./components/PostList.vue";
 import PostDetail from "./components/PostDetail.vue";
 
-// 詳細表示用
-const detailPost = ref(null);
-// 表示モード 一覧 or 詳細
+/**
+ * 表示モード list or detail
+ */
 const displayMode = ref("list");
-// 表示モード切り替え
+/**
+ * 表示モード切り替え
+ * @param {String} mode list or detail
+ */
 const changeMode = (mode) => {
   displayMode.value = mode;
 };
-// リストがクリックされたら詳細を表示する
+/**
+ * 詳細表示用の記事
+ */
+const detailPost = ref(null);
+/**
+ * リストがクリックされたら詳細を表示する
+ * @param post 記事データ
+ */
 const viewDetail = (post) => {
   detailPost.value = post;
   displayMode.value = "detail";
