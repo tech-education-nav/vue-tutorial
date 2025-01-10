@@ -1,6 +1,7 @@
 <script setup>
 import { computed, onBeforeMount, ref } from "vue";
 import PostFilterInput from "./PostFilterInput.vue";
+import Tooltip from "./common/Tooltip.vue";
 // カスタムイベント
 const emit = defineEmits(["select"]);
 // 投稿一覧
@@ -30,6 +31,7 @@ onBeforeMount(() => {
 <template>
   <PostFilterInput v-model="filterText" placeholder="記事タイトルで絞り込み" />
   <h2>記事一覧</h2>
+  <Tooltip> この機能は、ブログ記事の一覧を表示しています。 </Tooltip>
   <p v-if="filteredPosts.length === 0">記事はありません。</p>
   <ul>
     <li v-for="post in filteredPosts" :key="post.id" @click="handleClickPost(post)">

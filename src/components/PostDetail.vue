@@ -1,6 +1,7 @@
 <script setup>
 import { inject } from "vue";
 import PostUploader from "./PostUploader.vue";
+import Tooltip from "./common/Tooltip.vue";
 
 /**
  * 投稿詳細をinjectで受け取る
@@ -18,6 +19,11 @@ const emit = defineEmits(["changeMode"]);
   <div v-if="!detailPost">データがありません</div>
   <div v-else>
     <h2>記事詳細</h2>
+    <Tooltip>
+      <p>この機能は、ブログ記事の詳細を表示しています。</p>
+      <p>詳しくはマニュアルをご覧ください。</p>
+      <a href="https://example.com/" target="_blank">マニュアルを見る</a>
+    </Tooltip>
     <hr />
     <PostUploader />
     <h1>{{ detailPost.title }}</h1>
